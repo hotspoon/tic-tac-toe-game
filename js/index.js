@@ -1,4 +1,5 @@
-console.log("C4 game");
+"use strict";
+// console.log("C4 game");
 
 // JavaScript logic
 let Game = {
@@ -11,21 +12,21 @@ let Game = {
     // Reset game finish as false and selected player as undefined
     this.finish = false;
     this.lastPlayer = "undefined";
-    console.log("newBoard created: " + n + " by " + n);
+    // console.log("newBoard created: " + n + " by " + n);
   },
   winCount: function (n) {
     this.countWin = n;
-    console.log("Game of connect " + n);
+    // console.log("Game of connect " + n);
   },
   addMark: function (playerChosen, row, col) {
     if (playerChosen === this.lastPlayer) {
-      console.log("Not your turn");
+      // console.log("Not your turn");
     } else if (this.board[row][col] === ".") {
       this.board[row][col] = playerChosen;
       this["lastPlayer"] = playerChosen;
-      console.log("Player: " + playerChosen + " addMark to row: " + row + ", col: " + col);
+      // console.log("Player: " + playerChosen + " addMark to row: " + row + ", col: " + col);
     } else {
-      console.log("Already marked. Try again.");
+      // console.log("Already marked. Try again.");
     }
   },
   checkRows: function (playerChosen) {
@@ -41,10 +42,10 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("checkRow true on row: " + row);
+          // console.log("checkRow true on row: " + row);
           this["finish"] = true;
-          console.log("Start", row);
-          console.log("End", col);
+          // console.log("Start", row);
+          // console.log("End", col);
           return true;
         }
       }
@@ -63,7 +64,7 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("checkCol true on col " + col);
+          // console.log("checkCol true on col " + col);
           this["finish"] = true;
           return true;
         }
@@ -86,7 +87,7 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("Win diagonal TL to BR");
+          // console.log("Win diagonal TL to BR");
           this["finish"] = true;
           return true;
         }
@@ -103,7 +104,7 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("Win diagonal TL to BR");
+          // console.log("Win diagonal TL to BR");
           this["finish"] = true;
           return true;
         }
@@ -126,7 +127,7 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("Win diagonal TR to BL");
+          // console.log("Win diagonal TR to BL");
           this["finish"] = true;
           return true;
         }
@@ -143,7 +144,7 @@ let Game = {
           this.winArray = [];
         }
         if (count === this.countWin) {
-          console.log("Win diagonal TR to BL");
+          // console.log("Win diagonal TR to BL");
           this["finish"] = true;
           return true;
         }
@@ -173,7 +174,7 @@ let Game = {
       return true;
     }
     if (!this.finish && this.isEmpty()) {
-      console.log("Draw game no winner");
+      // console.log("Draw game no winner");
       return true;
     }
   },
@@ -204,7 +205,7 @@ $(document).ready(function () {
     } else {
       winCount = el;
     }
-    console.log("size: " + size + " winCount: " + winCount + " maxScore: " + maxScore);
+    // console.log("size: " + size + " winCount: " + winCount + " maxScore: " + maxScore);
   };
   $select.change(cacheValues);
   cacheValues();
@@ -261,7 +262,8 @@ $(document).ready(function () {
   // Function to assign player and update msg div
   let pickPlayer = function (name) {
     player = name;
-    console.log(player + " chosen");
+    // console.log(player);
+    // console.log(player + " chosen");
     $msg
       .html(player + " chosen")
       .removeClass()
@@ -290,7 +292,7 @@ $(document).ready(function () {
 
   // Cache value of button when player button clicked
   let buttonPlayer = function () {
-    let el = $(this).attr("class");
+    let el = $(this).attr("name");
     pickPlayer(el);
   };
   $players.on("click", "button", buttonPlayer);
@@ -315,7 +317,7 @@ $(document).ready(function () {
       player1Score++;
       $msg.html("Winner is player1 <br/> Reset Board (R)");
       $body.removeClass().addClass("player1");
-      console.log("player1Score:" + player1Score, "player2Score " + player2Score);
+      // console.log("player1Score:" + player1Score, "player2Score " + player2Score);
       $cell.off("click");
       printWin();
       // Player 2 wins round
@@ -323,7 +325,7 @@ $(document).ready(function () {
       player2Score++;
       $msg.html("Winner is player2 <br/> Reset Board (R)");
       $body.removeClass().addClass("player2");
-      console.log("player1Score:" + player1Score, "player2Score " + player2Score);
+      // console.log("player1Score:" + player1Score, "player2Score " + player2Score);
       $cell.off("click");
       printWin();
       // Draw round
@@ -349,7 +351,7 @@ $(document).ready(function () {
         alert("player2 WINS!");
       }
       window.location.reload();
-      $("body").html("Please reload browser to restart");
+      // $("body").html("Please reload browser to restart");
     }
   };
 
